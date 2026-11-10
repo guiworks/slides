@@ -1,0 +1,79 @@
+/* Cores de marca: padrão azul; cada deck pode sobrescrever com `brand:` no cabeçalho (ver global-bottom.vue) */
+:root {
+  --brand-accent: #7dd3fc;
+  --brand-grad-1: #93c5fd;
+  --brand-grad-2: #a5b4fc;
+  --brand-grad-3: #67e8f9;
+  --slidev-theme-primary: var(--brand-accent);
+  --slidev-code-padding: 8px 10px;
+  --slidev-code-background: #16161690 !important;
+}
+
+.dark #slide-content {
+  background-color: #04060b !important;
+}
+
+.slidev-layout h1 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.slidev-layout h6 {
+  text-transform: initial !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+}
+
+/* Cor de destaque da marca do deck (classe dobrada para vencer o `color: inherit` dos ícones) */
+.text-brand.text-brand,
+[text-brand][text-brand] {
+  color: var(--brand-accent);
+}
+
+.bg-brand,
+[bg-brand] {
+  background-color: var(--brand-accent);
+}
+
+/* Texto com degradê para destaques em títulos */
+.gradient-text {
+  background: linear-gradient(90deg, var(--brand-grad-1), var(--brand-grad-2) 50%, var(--brand-grad-3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Cliques revelam com fade + desfoque, em vez de surgir seco */
+.slidev-vclick-target {
+  transition:
+    opacity 500ms ease,
+    filter 200ms ease,
+    transform 500ms ease,
+    color 300ms ease;
+}
+
+.slidev-vclick-hidden {
+  opacity: 0;
+  pointer-events: none;
+  filter: blur(3px);
+}
+
+/* Transição entre slides usada no cabeçalho: transition: fade-out */
+.fade-out-leave-active {
+  transition:
+    opacity calc(var(--slidev-transition-duration) * 0.6) ease-out,
+    filter 200ms ease;
+}
+
+.fade-out-enter-active {
+  transition:
+    opacity calc(var(--slidev-transition-duration) * 0.8) ease-in,
+    filter 200ms ease;
+  transition-delay: calc(var(--slidev-transition-duration) * 0.6);
+}
+
+.fade-out-enter-from,
+.fade-out-leave-to {
+  opacity: 0;
+  filter: blur(5px);
+}
